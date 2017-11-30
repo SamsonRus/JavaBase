@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.javaBase.server.pojo.PersonTelDetailEntity" table="person_tel_detail" schema="javadata">
+        <id name="id">
+            <column name="ID" sql-type="int(11)"/>
+        </id>
+        <property name="telType">
+            <column name="TelType" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="telNumber">
+            <column name="TelNumber" sql-type="varchar(20)" length="20"/>
+        </property>
+        <many-to-one name="personByPersonId" class="com.javaBase.server.pojo.PersonEntity">
+            <column name="personId"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,169 @@
+/** Body */
+body{
+    margin:0px;
+    background-color: #fcfaeb;
+    font-family: 'MS Sans Serif',Arial,Verdana,sans-serif;
+    color: #413003;
+}
+
+.widgetTable{
+    width: ;
+}
+/**Header */
+.header {
+    background: linear-gradient(to bottom, #d8d8d8 40%, #a5a7a9 70%, #a5a7a9 99%, #d8d8d8);
+    display: table;
+    color: #000;
+    position: relative;
+    width: 100%;
+    height: inherit;
+    z-index: 0;
+}
+
+.headerLeft, .headerCenter, .headerRight{
+    display: table-cell;
+    position: relative;
+    padding-top: 1px;
+    vertical-align: top;
+}
+
+.headerLeftBox, .headerRightBox {
+    position: relative;
+    word-break: break-all;
+}
+
+.headerCenterBox {
+    display: table;
+    margin: 2px 3px 0;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+}
+
+.headerRightBox {
+    display: inline-block;
+    margin-right: -3px;
+    white-space: nowrap;
+}
+
+
+/** Add css rules here for your application. */
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.Button{
+    height: 25px;
+    display: block;
+    font-weight: bolder;
+    margin: 5px;
+}
+
+.textButton{
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.VPanel {
+    margin: 5px;
+}
+
+.gwt-Button{
+    border: 1px solid #aa8a49;
+    border-radius: 3px;
+    background: linear-gradient(to top, #d7af5d, #f6e2ad);
+    font-weight: bolder;
+}
+
+.gwt-DialogBox {
+    background-color:#f7f3de;
+    border: 1px solid rgb(128, 128, 128);
+}
+
+.dialogTop{
+    background: #aeafb2;
+    text-align: center;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+}
+
+.gwt-DialogBox > div >table {
+    border: 3px solid #aeafb2;
+}
+
+.detail-info >tbody>tr> td:first-child{
+    min-width:130px;
+}
+
+.contact-edit{
+    border: 3px solid #aeafb2;
+    border-radius:3px;
+    background-color:#f7f3de;
+}
+
+.dialogMiddle  td{
+    padding:3px;
+}
+
+.messageBox{
+    padding-top:40px;
+    text-align:center;
+    width:500px;
+    height:60px;
+    background:#f7f3de;
+    border:2px solid grey;
+}
+
+/*//////////////////CellTable///////////////////*/
+.cellTable{
+    border:1px solid #808080;
+    background-color:#f7f3de;
+    width:900px;
+}
+
+.cellTable th{
+    color: #594304;
+    text-shadow: #f0d89d 1px 1px 0;
+    border:1px solid #808080;
+}
+
+.cellTable td{
+    border:1px solid #808080;
+}
+
+/*//////////////////DatePicker//////////////////*/
+.gwt-DatePicker{
+    background-color: #f7f3de;
+    position:absolute;
+    outline: none;
+    z-index: 9006;
+    border: 2px solid rgb(128, 128, 128);
+    width: 180px;
+    height: 185px;
+    cursor: default;
+}
+
+.datePickerMonthSelector{
+    background-color: #f7f3de;
+    border-bottom: 1px solid #9f9b85;
+    text-align:center;
+    width: 100%;
+
+}
+
+.datePickerWeekdayLabel, .datePickerWeekendLabel{
+    border-bottom:1px solid black;
+}
+
+.datePickerDays{
+    text-align:center;
+    width:100%;
+
+}
+
+.datePickerDayIsWeekend{
+    color:red;
+}
+.datePickerDayIsFiller{
+    color:grey;
+}
