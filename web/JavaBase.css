@@ -1,14 +1,11 @@
 /** Body */
 body{
-    margin:0px;
+    margin:0;
     background-color: #fcfaeb;
     font-family: 'MS Sans Serif',Arial,Verdana,sans-serif;
     color: #413003;
 }
 
-.widgetTable{
-    width: ;
-}
 /**Header */
 .header {
     background: linear-gradient(to bottom, #d8d8d8 40%, #a5a7a9 70%, #a5a7a9 99%, #d8d8d8);
@@ -44,15 +41,7 @@ body{
     white-space: nowrap;
 }
 
-
-/** Add css rules here for your application. */
-
-h1 {
-    font-size: 2em;
-    font-weight: bold;
-    text-align: center;
-}
-
+/*//////////////////Button///////////////////*/
 .Button{
     height: 25px;
     display: block;
@@ -65,10 +54,6 @@ h1 {
     font-size: 13px;
 }
 
-.VPanel {
-    margin: 5px;
-}
-
 .gwt-Button{
     border: 1px solid #aa8a49;
     border-radius: 3px;
@@ -76,6 +61,45 @@ h1 {
     font-weight: bolder;
 }
 
+/*//////////////////CellTable///////////////////*/
+.cellTable{
+    border:1px solid #808080;
+    background-color:#f7f3de;
+    width: 100%;
+}
+
+.cellTable th{
+    color: #594304;
+    text-shadow: #f0d89d 1px 1px 0;
+    border:1px solid #808080;
+}
+
+.cellTable td{
+    border:1px solid #808080;
+}
+
+/*//////////////////dataInput///////////////////*/
+.dataInput td{
+    padding:0 !important;
+}
+
+.dataBox{
+    border: 1px solid #a9a9a9;
+    border-right: 0;
+    height: 21px;
+    border-radius: 3px 0px 0px 3px;
+}
+
+.calendarButton {
+    padding: 0;
+}
+
+.calendarButton img{
+    width: 17px;
+    height: 17px;
+}
+
+/*//////////////////DialogBox//////////////////*/
 .gwt-DialogBox {
     background-color:#f7f3de;
     border: 1px solid rgb(128, 128, 128);
@@ -103,32 +127,6 @@ h1 {
 
 .dialogMiddle  td{
     padding:3px;
-}
-
-.messageBox{
-    padding-top:40px;
-    text-align:center;
-    width:500px;
-    height:60px;
-    background:#f7f3de;
-    border:2px solid grey;
-}
-
-/*//////////////////CellTable///////////////////*/
-.cellTable{
-    border:1px solid #808080;
-    background-color:#f7f3de;
-    width:900px;
-}
-
-.cellTable th{
-    color: #594304;
-    text-shadow: #f0d89d 1px 1px 0;
-    border:1px solid #808080;
-}
-
-.cellTable td{
-    border:1px solid #808080;
 }
 
 /*//////////////////DatePicker//////////////////*/
@@ -164,6 +162,39 @@ h1 {
 .datePickerDayIsWeekend{
     color:red;
 }
+
 .datePickerDayIsFiller{
     color:grey;
+}
+
+/*//////////////////formObjects///////////////////*/
+.formObjects {
+    width: 100%;
+    padding: 0px 5px 0 5px;
+}
+
+/*//////////////////messageBox///////////////////*/
+.messageBox{
+    left:auto !important;
+    top:auto !important;
+    right: 0;
+    bottom: 0;
+    padding-top:40px;
+    text-align:center;
+    width:500px;
+    height:60px;
+    background:#f7f3de;
+    border:2px solid grey;
+}
+
+/** misc */
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.VPanel {
+    margin: 5px;
 }

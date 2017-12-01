@@ -2,6 +2,7 @@ package com.javaBase.client.listPersons;
 
 import com.google.gwt.cell.client.DateCell;
 import com.google.gwt.event.dom.client.DoubleClickEvent;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy;
@@ -13,6 +14,7 @@ import com.google.gwt.view.client.Range;
 import com.google.gwt.view.client.SingleSelectionModel;
 import com.javaBase.client.JavaBaseService;
 import com.javaBase.client.general.Button;
+import com.javaBase.client.general.DataInput;
 import com.javaBase.shared.Resources;
 
 import java.util.Date;
@@ -21,11 +23,29 @@ import java.util.List;
 public class TablePersons extends VerticalPanel{
 
     private CellTable<Person> tablePersons = new CellTable<>();
+    private HorizontalPanel buttonsPanel = new HorizontalPanel();
+    private SingleSelectionModel<Person> selectionModel = new SingleSelectionModel<>();
 
     public TablePersons(){
 
-        setWidth("100%");
-        SingleSelectionModel<Person> selectionModel = new SingleSelectionModel<>();
+        setStyleName("formObjects");
+        addSelectionModel();
+        addButtons();
+        addColumns();
+
+        tablePersons.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
+        tablePersons.addStyleName("cellTable");
+
+        load();
+
+        tablePersons.addRowCountChangeHandler(event -> tablePersons.setVisibleRange(new Range(1, event.getNewRowCount())));
+
+        add(buttonsPanel);
+        add(tablePersons);
+
+    }
+
+    private void addSelectionModel() {
         tablePersons.setSelectionModel(selectionModel);
         tablePersons.addDomHandler(event -> {
             Person selected = selectionModel.getSelectedObject();
@@ -36,11 +56,11 @@ public class TablePersons extends VerticalPanel{
             }
         },DoubleClickEvent.getType());
 
-        /*Кнопки*/
-        //**//кнопка 'Добавить'
+    }
+
+    private void addButtons() {
         Image imgAdd  = new Image(Resources.INSTANCE.add());
         Button addButton = new Button("Добавить", imgAdd, event -> new CardPerson().show());
-        //**//кнопка "Изменить"
         Image imgEdit = new Image(Resources.INSTANCE.edit());
         Button editButton = new Button("Изменить", imgEdit, event -> {
             Person selected = selectionModel.getSelectedObject();
@@ -50,13 +70,14 @@ public class TablePersons extends VerticalPanel{
                 Window.alert("Не выбрана ни одна строка");
             }
         });
-        //**//кнопка "Обновить"
         Image imgRefresh = new Image(Resources.INSTANCE.refresh());
         Button refreshButton = new Button("Обновить", imgRefresh, event -> refresh());
+        buttonsPanel.add(addButton);
+        buttonsPanel.add(editButton);
+        buttonsPanel.add(refreshButton);
+    }
 
-        tablePersons.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
-        tablePersons.addStyleName("cellTable");
-
+    private void addColumns() {
         TextColumn<Person> firstName = new TextColumn<Person>() {
             @Override
             public String getValue(Person object) {
@@ -75,7 +96,8 @@ public class TablePersons extends VerticalPanel{
         lastName.setSortable(true);
         tablePersons.addColumn(lastName, "Фамилия");
 
-        DateCell dateCell = new DateCell();
+        DateTimeFormat dateTimeFormat = DateTimeFormat.getFormat("dd.MM.yyyy");
+        DateCell dateCell = new DateCell(dateTimeFormat);
         Column<Person, Date> birthDate = new Column<Person, Date>(dateCell) {
             @Override
             public Date getValue(Person object) {
@@ -83,18 +105,6 @@ public class TablePersons extends VerticalPanel{
             }
         };
         tablePersons.addColumn(birthDate, "Дата рождения");
-
-        load();
-
-        tablePersons.addRowCountChangeHandler(event -> tablePersons.setVisibleRange(new Range(0, event.getNewRowCount())));
-
-        HorizontalPanel buttonsPanel = new HorizontalPanel();
-        buttonsPanel.add(addButton);
-        buttonsPanel.add(editButton);
-        buttonsPanel.add(refreshButton);
-        add(buttonsPanel);
-        add(tablePersons);
-
     }
 
     private void refresh(){

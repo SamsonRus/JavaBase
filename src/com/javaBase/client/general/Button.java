@@ -16,14 +16,9 @@ import com.google.gwt.user.client.ui.Label;
  *
  * <h3>CSS Style Rules</h3>
  * <dl>
- * <dt>.gwt-Button</dt>
+ * <dt>.Button</dt>
  * <dd>the outer element</dd>
  * </dl>
- *
- * <p>
- * <h3>Example</h3>
- * {@example com.google.gwt.examples.ButtonExample}
- * </p>
  */
 public class Button extends com.google.gwt.user.client.ui.Button {
 
@@ -37,20 +32,30 @@ public class Button extends com.google.gwt.user.client.ui.Button {
     /**
      * Creates a button with the given HTML caption.
      *
+     * @param html the html caption.
+     */
+    public Button(@IsSafeHtml String html){
+        this();
+        setHTML(html);
+   }
+
+    /**
+     * Creates a button with the given HTML caption.
+     *
      * @param html the HTML caption
      */
     public Button(SafeHtml html) {
+        this();
         setHTML(html.asString());
-        setStyleName("Button");
     }
 
     /**
-     * Creates a button with the given HTML caption and click handler.
+     * Creates a button with the given click handler.
      *
      * @param handler the click handler
      */
     public Button(ClickHandler handler){
-        setStyleName("Button");
+        this();
         addClickHandler(handler);
     }
 
@@ -61,34 +66,34 @@ public class Button extends com.google.gwt.user.client.ui.Button {
      * @param handler the click handler.
      */
     public Button(@IsSafeHtml String html, ClickHandler handler){
+        this();
         setHTML(html);
-        setStyleName("Button");
         addClickHandler(handler);
     }
 
     /**
-     * Creates a button with the image.
+     * Creates a button with the given image.
      *
      * @param image the Image.
      */
     public Button(Image image){
+        this();
         image.setWidth("15px");
         image.setHeight("15px");
         setHTML("" + image);
-        setStyleName("Button");
     }
 
     /**
-     * Creates a button with the given HTML caption and click handler.
+     * Creates a button with the given image and click handler.
      *
      * @param image the Image
      * @param handler the click handler
      */
     public Button(Image image, ClickHandler handler){
+        this();
         image.setWidth("15px");
         image.setHeight("15px");
         setHTML("" + image);
-        setStyleName("Button");
         addClickHandler(handler);
     }
 
@@ -99,6 +104,7 @@ public class Button extends com.google.gwt.user.client.ui.Button {
      * @param image the Image
      */
     public Button(@IsSafeHtml String html, Image image){
+        this();
         HorizontalPanel htmlButton = new HorizontalPanel();
         image.setWidth("15px");
         image.setHeight("15px");
@@ -108,7 +114,6 @@ public class Button extends com.google.gwt.user.client.ui.Button {
         htmlButton.addStyleName("textButton");
 
         setHTML("" + htmlButton);
-        setStyleName("Button");
     }
 
     /**
@@ -119,6 +124,7 @@ public class Button extends com.google.gwt.user.client.ui.Button {
      * @param handler the click handler
      */
     public Button(@IsSafeHtml String html, Image image, ClickHandler handler){
+        this();
         HorizontalPanel htmlButton = new HorizontalPanel();
         image.setWidth("15px");
         image.setHeight("15px");
@@ -128,7 +134,6 @@ public class Button extends com.google.gwt.user.client.ui.Button {
         htmlButton.addStyleName("textButton");
 
         setHTML("" + htmlButton);
-        setStyleName("Button");
         addClickHandler(handler);
     }
 }

@@ -1,18 +1,14 @@
 package com.javaBase.client.listPersons;
 
 import com.google.gwt.i18n.client.DateTimeFormat;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
-import com.google.gwt.user.datepicker.client.DatePicker;
 import com.javaBase.client.JavaBaseService;
 import com.javaBase.client.general.Button;
-import com.javaBase.client.general.buttons.CancelButton;
+import com.javaBase.client.general.DataInput;
 import com.javaBase.client.general.messageBox;
 import com.javaBase.shared.Resources;
-
 import java.util.Date;
-import java.util.Objects;
 
 class CardPerson extends DialogBox{
     private HorizontalPanel firstNamePanel = new HorizontalPanel();
@@ -20,11 +16,11 @@ class CardPerson extends DialogBox{
     private HorizontalPanel birthDatePanel = new HorizontalPanel();
 
     private HorizontalPanel buttonPanel = new HorizontalPanel();
-    private CancelButton cancelButton = new CancelButton(event -> CardPerson.this.hide());
+    private Button cancelButton = new Button("Отмена",event -> CardPerson.this.hide());
 
     private TextBox firstNameBox = new TextBox();
     private TextBox lastNameBox = new TextBox();
-    private TextBox birthDateBox = new TextBox();
+    private DataInput birthDateBox = new DataInput();
 
     /**
      * Creates a form for filling of the Person
@@ -163,49 +159,9 @@ class CardPerson extends DialogBox{
 
             birthDateBox.setText(dateString);
         }
-        birthDateBox.addClickHandler(event -> {
-            final Calendar calendar = new Calendar(birthDateBox);
-
-            calendar.setPopupPositionAndShow((offsetWidth, offsetHeight) -> {
-                int left = (Window.getClientWidth() - offsetWidth) / 2;
-                int top = (Window.getClientHeight() - offsetHeight)/2;
-                calendar.setPopupPosition(left, top);
-            });
-            calendar.show();
-        });
         birthDatePanel.setStyleName("detail-info");
         birthDatePanel.add(birthDateLabel);
         birthDatePanel.add(birthDateBox);
     }
 
-    private class Calendar extends PopupPanel {
-
-        Calendar(TextBox birthDateBox) {
-
-            super(false,true);
-
-            DatePicker calendar = new DatePicker();
-            calendar.setYearAndMonthDropdownVisible(true);
-            if(birthDateBox.getText()!=null & !Objects.equals(birthDateBox.getText(), "")){
-                DateTimeFormat dateTimeFormat = DateTimeFormat.getFormat("dd.MM.yyyy");
-                Date dateBirth = dateTimeFormat.parse(birthDateBox.getText());
-
-                calendar.setValue(dateBirth);
-            }
-            calendar.addValueChangeHandler(event -> {
-                Date date = event.getValue();
-
-                DateTimeFormat fmt = DateTimeFormat.getFormat("dd.MM.yyyy");
-                String dateString = fmt.format(date);
-
-                //String dateString = DateTimeFormat.getMediumDateFormat().format(date);
-                birthDateBox.setText(dateString);
-                Calendar.super.hide();
-            });
-
-
-
-            setWidget(calendar);
-        }
-    }
 }

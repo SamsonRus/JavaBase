@@ -23,6 +23,9 @@ public interface Resources extends ClientBundle {
     @Source("img/icons/add.png")
     ImageResource add();
 
+    @Source("img/icons/calendar.png")
+    ImageResource calendar();
+
     @Source("img/icons/cancel_search.png")
     ImageResource cancel_search();
 

@@ -23,7 +23,7 @@ public class JavaBaseServiceImpl extends RemoteServiceServlet implements JavaBas
         personEntity.setFirstName(person.getFirstName());
         personEntity.setLastName(person.getLastName());
 
-        session.save(personEntity);
+        session.saveOrUpdate(personEntity);
         session.getTransaction().commit();
 
         session.close();
