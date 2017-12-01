@@ -14,7 +14,6 @@ import com.google.gwt.view.client.Range;
 import com.google.gwt.view.client.SingleSelectionModel;
 import com.javaBase.client.JavaBaseService;
 import com.javaBase.client.general.Button;
-import com.javaBase.client.general.DataInput;
 import com.javaBase.shared.Resources;
 
 import java.util.Date;

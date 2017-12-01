@@ -1,29 +1,64 @@
 package com.javaBase.client.general;
 
+import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.client.ui.Button;
 import com.javaBase.shared.Resources;
 
+/**
+ * DataInput consists from TextBox and Button for opening calendar.
+ * TextBox
+ */
 public class DataInput extends HorizontalPanel{
-    public TextBox dataBox = new TextBox();
+    private TextBox dataBox = new TextBox();
     private com.google.gwt.user.client.ui.Button openCalendar = new Button();
 
+    /**
+     * Create DataInput.
+     */
     public DataInput(){
         dataBox.setWidth("152px");
+        setStyleName("dataInput");
+        dataBox.setStyleName("dataBox");
 
         Image imgCalendar = new Image(Resources.INSTANCE.calendar());
         openCalendar.setHTML("" + imgCalendar);
 
-        addBlur();
+        addHandlers();
         addButtonHandler();
         add(dataBox);
         add(openCalendar);
     }
 
-    private void addBlur() {
+    /**
+     * add handlers for DataInput.
+     */
+    private void addHandlers() {
+        dataBox.addKeyPressHandler(event-> addMask());
         dataBox.addBlurHandler(event -> reformatDate());
+        dataBox.addKeyUpHandler(event -> {
+            if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+                reformatDate();
+            }
+        });
     }
 
+    /**
+     * add masks for DataInput.
+     */
+    private void addMask() {
+        String text = dataBox.getText();
+        text = text.replaceAll("\\D+", "");
+        if (text.length() >= 2 & text.length() < 4) {
+            dataBox.setText("" + text.substring(0, 2) + "." + text.substring(2, text.length()));
+        }else if (text.length() >= 4 & text.length() < 6) {
+            dataBox.setText("" + text.substring(0, 2) + "." + text.substring(2, 4) + "." + text.substring(4, text.length()));
+        }
+    }
+
+    /**
+     * reformat date.
+     */
     private void reformatDate() {
         String text = dataBox.getText();
         text = text.replaceAll("\\D+", "");
@@ -44,6 +79,9 @@ public class DataInput extends HorizontalPanel{
         }
     }
 
+    /**
+     * add handler for open calendar.
+     */
     private void addButtonHandler() {
         openCalendar.getAbsoluteLeft();
         openCalendar.setStyleName("calendarButton");

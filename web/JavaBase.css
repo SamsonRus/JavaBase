@@ -132,7 +132,6 @@ body{
 /*//////////////////DatePicker//////////////////*/
 .gwt-DatePicker{
     background-color: #f7f3de;
-    position:absolute;
     outline: none;
     z-index: 9006;
     border: 2px solid rgb(128, 128, 128);
@@ -171,6 +170,11 @@ body{
 .formObjects {
     width: 100%;
     padding: 0px 5px 0 5px;
+}
+
+/*//////////////////glassBackground///////////////////*/
+.glassBackground{
+    background: rgba(0,0,0,0.5);
 }
 
 /*//////////////////messageBox///////////////////*/

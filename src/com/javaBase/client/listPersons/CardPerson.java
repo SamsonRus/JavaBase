@@ -29,6 +29,7 @@ class CardPerson extends DialogBox{
         setText("Создание клиента");
         setStyleName("contact-edit");
         setAnimationEnabled(true);
+        setModal(true);
 
         VerticalPanel dataPanel = new VerticalPanel();
 
