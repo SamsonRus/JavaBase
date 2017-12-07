@@ -35,7 +35,7 @@ public class TablePersons extends VerticalPanel{
         tablePersons.setKeyboardSelectionPolicy(HasKeyboardSelectionPolicy.KeyboardSelectionPolicy.ENABLED);
         tablePersons.addStyleName("cellTable");
 
-        load();
+        loadDataPersons();
 
         tablePersons.addRowCountChangeHandler(event -> tablePersons.setVisibleRange(new Range(1, event.getNewRowCount())));
 
@@ -108,10 +108,10 @@ public class TablePersons extends VerticalPanel{
 
     private void refresh(){
         tablePersons.redraw();
-        load();
+        loadDataPersons();
     }
 
-    private void load(){
+    private void loadDataPersons(){
         JavaBaseService.App.getInstance().getAllPersons(new AsyncCallback<List<Person>>() {
             @Override
             public void onFailure(Throwable caught) {
